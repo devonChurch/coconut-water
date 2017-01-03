@@ -1,6 +1,27 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 8081;
+
+function generateHtml() {
+
+	const html = (
+		`
+			<html>
+				<head>
+					<link rel="stylesheet" href="https://s3-ap-southeast-2.amazonaws.com/coconut-water/main.css">
+				</head>
+				<body>
+					${generateRandomImage()}
+					<br>
+					<a href="/">Refresh</a>
+				</body>
+			</html>
+		`
+	);
+
+	return `<!doctype html>${html}`;
+
+}
 
 function randomiseBetweenTwoNumbers(min = 0, max = 1) {
 
@@ -25,9 +46,9 @@ function generateRandomImage() {
 
 app.get('/', (request, response) => {
 
-	const randomImage = generateRandomImage();
+	const html = generateHtml();
 
-	response.send(randomImage);
+	response.send(html);
 
 });
 
