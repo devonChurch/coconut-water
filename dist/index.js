@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = 3000;
 
 function randomiseBetweenTwoNumbers(min = 0, max = 1) {
 
@@ -30,4 +31,4 @@ app.get('/', (request, response) => {
 
 });
 
-app.listen(3000, () => console.log('listening on port 3000'));
+app.listen(port, () => console.log(`listening on port ${port}`));
